@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordly Dictionary</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/8899b6a83e.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+     
+
+    <div class="app-section">
+      <header class="hero">
+        <div>
+          <p class="label">Wordly</p>
+          <h1>Search. Listen. Save.</h1>
+          <p class="hero-text">
+            Search words, view their definition, hear their pronunciation, and save favorites without leaving the page.
+          </p>
+        </div>
+      </header>
+
+      <main>
+        <form id="search-form" class="search-form" aria-label="Search for a word">
+          <label class="sr-only" for="word-input">Search word</label>
+          <input id="word-input" name="word" type="text" placeholder="Type a word" required />
+          <button type="submit">Search</button>
+        </form>
+
+
+        
+
+        <section id="results" class="results hidden" aria-live="polite">
+          <div class="results-header">
+            <div>
+              <h2 id="word-title">Word</h2>
+              <p id="phonetic-text" class="phonetic"></p>
+            </div>
+            <div class="results-actions">
+              <button id="play-btn" class="secondary-btn hidden" type="button"><i class="fa-solid fa-play"></i> Play</button>
+              <button id="save-btn" class="secondary-btn" type="button" aria-pressed="false">Save word</button>
+            </div>
+          </div>
+
+          <div id="loading-msg" class="status hidden">Loading definition…</div>
+          <div id="error-msg" class="status error hidden"></div>
+          <div id="meanings"></div>
+        </section>
+
+        <section class="saved-section" aria-label="Saved words">
+          <div class="saved-header">
+            <h3>Saved words</h3>
+            <p id="no-saved-msg">Your favorite words will appear here.</p>
+          </div>
+          <ul id="saved-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <audio id="audio-player"></audio>
+    <script src="script.js"></script>
+  </body>
+</html>
