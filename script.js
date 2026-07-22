@@ -163,7 +163,7 @@ function playPronunciation() {
 
   audioPlayer.src = state.currentAudioUrl;
   audioPlayer.play().catch(() => {
-    setError('Unable to play pronunciation audio.');
+    setError('Unable to play pronunciation audio');
   });
 }
 
