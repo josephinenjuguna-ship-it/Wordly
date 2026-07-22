@@ -10,6 +10,8 @@ const loadingMsg = document.getElementById('loading-msg');
 const errorMsg = document.getElementById('error-msg');
 const resultsBox = document.getElementById('results');
 const wordTitle = document.getElementById('word-title');
+
+
 const phoneticText = document.getElementById('phonetic-text');
 const playBtn = document.getElementById('play-btn');
 const meaningsBox = document.getElementById('meanings');
