@@ -77,13 +77,28 @@ function buildMeaningBlock(meaning) {
 
 
 function updateSaveState() {
-  const isSaved = Boolean(state.currentWord && state.savedWords.some((item) => item.word === state.currentWord.word));
-  saveBtn.textContent = isSaved ? 'Saved ' : 'Save word';
-  saveBtn.classList.toggle('saved', isSaved);
-  saveBtn.disabled = !state.currentWord;
+
+  if (!state.currentWord) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Save Word";
+    saveBtn.classList.remove("saved");
+    return;
+  }
+  saveBtn.disabled = false;
+
+  let found = state.savedWords.find(function(item) {
+    return item.word === state.currentWord.word;
+  });
+
+  if (found) {
+    saveBtn.textContent = "saved";
+    saveBtn.classList.add("saved")
+  } else {
+    saveBtn.textContent = "Saved Word";
+    saveBtn.classList.remove("saved");
+  }
 }
-
-
+  
 function updateSavedList() {
   savedList.innerHTML = '';
 
@@ -111,7 +126,7 @@ function updateSavedList() {
     removeBtn.type = 'button';
     removeBtn.className = 'remove-saved';
     removeBtn.setAttribute('aria-label', `Remove ${item.word}`);
-    removeBtn.textContent = '✕';
+    removeBtn.textContent = '';
     removeBtn.addEventListener('click', (event) => {
       event.stopPropagation();
       state.savedWords = state.savedWords.filter((saved) => saved.word !== item.word);
@@ -150,6 +165,9 @@ function displayDefinition(entry) {
       break;
     }
   }
+
+  state.currentAudioUrl = audioCandidate ? audioCandidate.audio :null;
+  playBtn.classList.toggle('hidden',!state.currentAudioUrl);
 
   meaningsBox.innerHTML = '';
   entry.meanings.forEach((meaning) => meaningsBox.appendChild(buildMeaningBlock(meaning)));
