@@ -6,25 +6,20 @@ box-sizing:border-box;
 }
 
 body{
-
 font-family:Arial,sans-serif;
 background:#f4f4f4;
-
 }
 
 header{
-
 background:darkblue;
 color:white;
 padding:30px;
 text-align:center;
 font-size: larger;
 font-weight: bolder;
-
 }
 
 main{
-
 width:90%;
 max-width:900px;
 margin:30px auto;
@@ -32,14 +27,12 @@ margin:30px auto;
 }
 
 form{
-
 display:flex;
 gap:10px;
 
 }
 
 input{
-
 flex:1;
 padding:12px;
 border-radius:8px;
@@ -48,7 +41,6 @@ border:1px solid whitesmoke;
 }
 
 button{
-
 padding:12px 18px;
 border:none;
 background:darkblue;
@@ -56,18 +48,15 @@ color:white;
 border-radius:8px;
 cursor:pointer;
 transition:.3s;
-
 }
 
 button:hover{
-
 background:darkslateblue;
 transform:scale(1.05);
 
 }
 
 #result{
-
 margin-top:30px;
 background:white;
 padding:20px;
@@ -77,26 +66,22 @@ box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
 .card{
-
 border-left:6px solid blue;
 
 }
 
 audio{
-
 margin-top:10px;
 width:100%;
 
 }
 
 .saveBtn{
-
 margin-top:15px;
 
 }
 
 .savedWord{
-
 display:inline-block;
 padding:8px 12px;
 margin:5px;
@@ -107,21 +92,18 @@ border-radius:20px;
 }
 
 .hidden{
-
 position:absolute;
 left:-9999px;
 
 }
 
 .error{
-
 color:red;
 font-weight:bold;
 
 }
 
 footer{
-
 text-align:center;
 padding:20px;
 margin-top:40px;
