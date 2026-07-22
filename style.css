@@ -1,23 +1,12 @@
 :root {
   --bg: #f4f7fb;
-  --panel: #ffffff;
-  --text: #18212f;
-  --muted: #5f6b7a;
-  --accent: #4f46e5;
-  --accent-soft: #e0e7ff;
-  --border: #dde3ec;
-  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-}
-
-body.dark {
-  --bg: #0f172a;
-  --panel: #111827;
-  --text: #f8fafc;
-  --muted: #cbd5e1;
-  --accent: #818cf8;
-  --accent-soft: rgba(129, 140, 248, 0.2);
-  --border: #334155;
-  --shadow: 0 12px 30px rgba(2, 6, 23, 0.35);
+  --panel: #fff;
+  --text: black;
+  --muted: grey;
+  --accent: blue;
+  --accent-soft: white;
+  --border: whitesmoke;
+ 
 }
 
 * {
@@ -47,7 +36,6 @@ body {
   background: var(--panel);
   padding: 24px;
   border-radius: 20px;
-  box-shadow: var(--shadow);
   margin-bottom: 24px;
 }
 
@@ -86,7 +74,7 @@ button:hover {
 }
 
 .theme-toggle,
-button[type="submit"] {
+button{
   background: var(--accent);
   color: white;
 }
@@ -112,7 +100,6 @@ main {
   background: var(--panel);
   padding: 18px;
   border-radius: 18px;
-  box-shadow: var(--shadow);
 }
 
 .search-form input {
@@ -135,7 +122,6 @@ main {
   background: var(--panel);
   padding: 22px;
   border-radius: 18px;
-  box-shadow: var(--shadow);
 }
 
 .results-header,

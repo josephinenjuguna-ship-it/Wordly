@@ -23,7 +23,6 @@
 
       <main>
         <form id="search-form" class="search-form" aria-label="Search for a word">
-          <label class="sr-only" for="word-input">Search word</label>
           <input id="word-input" name="word" type="text" placeholder="Type a word" required />
           <button type="submit">Search</button>
         </form>
@@ -31,21 +30,22 @@
 
         
 
-        <section id="results" class="results hidden" aria-live="polite">
+        <section id="results" class="results hidden">
           <div class="results-header">
             <div>
               <h2 id="word-title">Word</h2>
               <p id="phonetic-text" class="phonetic"></p>
             </div>
             <div class="results-actions">
-              <button id="play-btn" class="secondary-btn hidden" type="button"><i class="fa-solid fa-play"></i> Play</button>
-              <button id="save-btn" class="secondary-btn" type="button" aria-pressed="false">Save word</button>
+              <button id="play-btn" class="secondary-btn" type="button"><i class="fa-solid fa-play"></i> Play</button>
+              <button id="save-btn" class="secondary-btn" type="button">Save word</button>
             </div>
           </div>
 
-          <div id="loading-msg" class="status hidden">Loading definition…</div>
-          <div id="error-msg" class="status error hidden"></div>
+          <div id="loading-msg" class="status">Loading definition…</div>
+          <div id="error-msg" class="status error"></div>
           <div id="meanings"></div>
+
         </section>
 
         <section class="saved-section" aria-label="Saved words">

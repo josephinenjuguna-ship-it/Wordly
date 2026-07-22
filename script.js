@@ -3,7 +3,7 @@ const state = {
   currentWord: null,
   currentAudioUrl: null,
 };
- // Dom element references
+
 const searchForm = document.getElementById('search-form');
 const wordInput = document.getElementById('word-input');
 const loadingMsg = document.getElementById('loading-msg');
@@ -18,8 +18,7 @@ const savedList = document.getElementById('saved-list');
 const noSavedMsg = document.getElementById('no-saved-msg');
 const audioPlayer = document.getElementById('audio-player');
 
-// UI helpers
-//loading and error messages
+
 
 function showLoading(isLoading) {
   loadingMsg.classList.toggle('hidden', !isLoading);
@@ -30,19 +29,14 @@ function setError(message) {
   errorMsg.classList.toggle('hidden', !message);
 }
 
-// API Call - fetching a words definition from the Free dictionary API
+
 async function fetchDefinition(word) {
-  const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
-
-  if (!response.ok) {
-    throw new Error('Word not found. Please try another term.');
-  }
-
+  const response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + word);
   const data = await response.json();
   return data[0];
 }
 
-// Rendering - building the HTML definition
+
 function buildMeaningBlock(meaning) {
   const block = document.createElement('div');
   block.className = 'meaning-block';
@@ -53,7 +47,7 @@ function buildMeaningBlock(meaning) {
   block.appendChild(heading);
 
   const list = document.createElement('ol');
-  meaning.definitions.slice(0, 4).forEach((definition) => {
+  meaning.definitions.slice().forEach((definition) => {
     const item = document.createElement('li');
     item.innerHTML = `<p>${definition.definition}</p>`;
 
@@ -80,17 +74,13 @@ function buildMeaningBlock(meaning) {
 }
 
 
-// Save button
-
 function updateSaveState() {
   const isSaved = Boolean(state.currentWord && state.savedWords.some((item) => item.word === state.currentWord.word));
-  saveBtn.textContent = isSaved ? 'Saved ✓' : 'Save word';
+  saveBtn.textContent = isSaved ? 'Saved ' : 'Save word';
   saveBtn.classList.toggle('saved', isSaved);
-  saveBtn.setAttribute('aria-pressed', String(isSaved));
   saveBtn.disabled = !state.currentWord;
 }
 
-// Saved words
 
 function updateSavedList() {
   savedList.innerHTML = '';
@@ -134,7 +124,7 @@ function updateSavedList() {
   });
 }
 
-// This saves the savedWords to the browsers localStorage even if one reloads the page, they will remain saved.
+
 function persistSavedWords() {
   localStorage.setItem('wordlySavedWords', JSON.stringify(state.savedWords));
 }
@@ -145,20 +135,18 @@ function loadSavedWords() {
   updateSavedList();
 }
 
-// Displays a searched word
 
 function displayDefinition(entry) {
   state.currentWord = entry;
   wordTitle.textContent = entry.word;
   phoneticText.textContent = entry.phonetic || '';
 
-  const audioCandidate = entry.phonetics?.find((item) => item.audio && item.audio.trim());
-  if (audioCandidate) {
-    state.currentAudioUrl = audioCandidate.audio;
-    playBtn.classList.remove('hidden');
-  } else {
-    state.currentAudioUrl = null;
-    playBtn.classList.add('hidden');
+  let audioCandidate = null;
+  for (let i = 0; i < entry.phonetics.length; i++) {
+    if (entry.phonetics[i].audio) {
+      audioCandidate = entry.phonetics[i];
+      break;
+    }
   }
 
   meaningsBox.innerHTML = '';
@@ -167,7 +155,6 @@ function displayDefinition(entry) {
   updateSaveState();
 }
 
-// plays an audio of a word
 
 function playPronunciation() {
   if (!state.currentAudioUrl) {
@@ -180,8 +167,6 @@ function playPronunciation() {
   });
 }
 
-
-// Event Handling - when the search button is clicked 
 
 async function handleSearch(event) {
   event.preventDefault();
