@@ -107,5 +107,19 @@ footer{
 text-align:center;
 padding:20px;
 margin-top:40px;
+color: black;
+font-size: small;
 
+}
+
+@media (max-width:768px) {
+  form {
+    flex-direction: column;
+  }
+  button {
+    width: 100%
+  }
+  .container {
+    padding: 20px;
+  }
 }
